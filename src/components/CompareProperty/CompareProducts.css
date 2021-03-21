@@ -1,0 +1,45 @@
+.modal-bodyCompare {
+  padding: 15px 30px;
+  border-bottom: 1px solid grey;
+  text-align: left;
+  display: flex;
+  justify-content: center;
+}
+.modal-content {
+  width: 80%;
+}
+
+#compare-btn {
+  border-radius: 50px;
+  border: none;
+  outline: none;
+}
+
+.modal-header button {
+  border-radius: 50%;
+  border: none;
+  outline: 0;
+}
+.CompareModal {
+  padding: 5px;
+  margin: 10px;
+  border-radius: 5px;
+  width: 360px;
+  background-color: #ccc;
+}
+.compareBodyHeader {
+  text-align: center;
+  border-bottom: 1px solid black;
+  font-size: 20px;
+}
+.compareBodyFooter {
+  text-align: center;
+  padding: 10px;
+}
+.compareBodyMain {
+  border-bottom: 1px solid black;
+  padding: 10px;
+}
+.compareBodyFooter button {
+  color: white;
+}
