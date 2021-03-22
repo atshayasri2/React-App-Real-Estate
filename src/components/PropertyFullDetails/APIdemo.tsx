@@ -36,7 +36,7 @@ export const APIdemo: React.FC<IProps> = (props) => {
       //clean up
       console.log("componentWillUnmount");
     };
-  }, []);
+  });
   const ListWithLoading = withLoading(Property);
   return (
     <>
