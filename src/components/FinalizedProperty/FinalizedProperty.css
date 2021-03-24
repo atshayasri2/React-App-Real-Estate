@@ -1,0 +1,79 @@
+.btn-buy {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0;
+}
+.cart-header {
+  text-align: center;
+  border-top: 2px solid #ccc;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  margin: 0;
+}
+.cart-Details {
+  display: flex;
+  width: 80%;
+  margin: 0 auto;
+  justify-content: space-around;
+  border-bottom: 2px solid #ccc;
+  padding: 30px;
+}
+.modal-dialog-final {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+.cart-Details {
+  background-color: whitesmoke;
+  margin-bottom: 20px;
+}
+.Full-Details img {
+  object-fit: cover;
+}
+.cart {
+  background-color: whitesmoke;
+}
+.modal-content-property {
+  /* height: 700px; */
+  background-color: #fefefe;
+  margin: auto;
+  border: 1px solid #888;
+  width: 25%;
+  border-radius: 5px;
+}
+
+.cart-btn button {
+  margin-left: 10px;
+}
+.cart-btn .contact-btn {
+  margin-left: 0;
+}
+.form-container input {
+  width: 100%;
+  padding: 16px 10px;
+  margin: 10px 0 22px 0;
+  box-sizing: border-box;
+  border: none;
+  background: #f1f1f1;
+}
+.form-container button {
+  background-color: black;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom: 10px;
+}
+.cart-empty {
+  border-top: 1px solid black;
+  min-height: 400px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  background-color: white;
+}

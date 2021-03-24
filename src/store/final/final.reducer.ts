@@ -1,20 +1,20 @@
 import { IRoomDetail } from "../../components/FeaturedProperties/FeaturedProperties";
-import { ADD_ITEM_TO_COMPARE, CompareType, REMOVE_ITEM_FROM_COMPARE } from "./compare.types";
+import { ADD_ITEM_TO_FINAL, finalType, REMOVE_ITEM_FROM_FINAL } from "./final.types";
 
-export interface ICompareInitialState {
-    compareItems: IRoomDetail[],
+export interface IFinalInitialState {
+    FinalItems: IRoomDetail[],
 }
 
-const initialState: ICompareInitialState = {
-    compareItems: [],
+const initialState: IFinalInitialState = {
+    FinalItems: [],
 }
 
-const compareReducer = (state = initialState, action: CompareType): ICompareInitialState => {
+const finalReducer = (state = initialState, action: finalType): IFinalInitialState => {
     switch (action.type) {
-        case ADD_ITEM_TO_COMPARE:
-            let idAlreadyExists = state.compareItems.indexOf(action.item) > -1;
-            let availableIds = state.compareItems.slice();
-            if(!idAlreadyExists && state.compareItems.length<3) {
+        case ADD_ITEM_TO_FINAL:
+            let idAlreadyExists = state.FinalItems.indexOf(action.item) > -1;
+            let availableIds = state.FinalItems.slice();
+            if(!idAlreadyExists && state.FinalItems.length<3) {
                 // availableIds = availableIds.filter(id => id !== action.item);
                 availableIds.push(action.item); 
             }
@@ -26,19 +26,19 @@ const compareReducer = (state = initialState, action: CompareType): ICompareInit
             return {
                 ...state,
                 // compareItems: [...state.compareItems, action.item],
-                compareItems: [...availableIds],
+                FinalItems: [...availableIds],
             }
-        case REMOVE_ITEM_FROM_COMPARE:
-            const items = state.compareItems;
+        case REMOVE_ITEM_FROM_FINAL:
+            const items = state.FinalItems;
             const id = action.id;
             items.splice(id, 1);
             return {
                 ...state,
-                compareItems: [...items],
+                FinalItems: [...items],
             }
         default:
             return state;
     }
 }
 
-export default compareReducer;
+export default finalReducer;

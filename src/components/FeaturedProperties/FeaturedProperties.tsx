@@ -5,6 +5,8 @@ import Compareprod from "../CompareProperty/CompareProducts";
 import { connect, ConnectedProps } from "react-redux";
 import { Dispatch } from "redux";
 import { setItemToCompareReducer } from "../../store/compare/compare.action";
+import { AllReduxStoreTypes } from "../../store/reducer";
+// import FinalizedProperty from "../FinalizedProperty/FinalizedProperty";
 export interface IRoomDetail {
   id: number;
   name: string;
@@ -18,14 +20,18 @@ export interface IRoomDetail {
   noOfBaths: number;
   taxiAvailability: string;
 }
-
+const mapStateToProps = (reduxStates: AllReduxStoreTypes) => {
+  return {
+    ComparePropertiesData: reduxStates.compareReducer.compareItems,
+  };
+};
 const mapDispatchToStore = (dispatch: Dispatch) => {
   return {
     sendToRedux: (item: IRoomDetail) => dispatch(setItemToCompareReducer(item)),
   };
 };
 
-const reduxConnector = connect(null, mapDispatchToStore);
+const reduxConnector = connect(mapStateToProps, mapDispatchToStore);
 
 interface IProps
   extends RouteComponentProps,
@@ -37,6 +43,7 @@ interface IState {
   showModal: boolean;
   modalData: IRoomDetail;
   passData: IRoomDetail;
+  popup: boolean;
 }
 
 class FeaturedProperties extends React.Component<IProps, IState> {
@@ -44,6 +51,7 @@ class FeaturedProperties extends React.Component<IProps, IState> {
     showModal: false,
     modalData: {} as IRoomDetail,
     passData: {} as IRoomDetail,
+    popup: false,
   };
 
   check = (typec: string) => {
@@ -53,6 +61,14 @@ class FeaturedProperties extends React.Component<IProps, IState> {
     }
   };
 
+  checkLength() {
+    if (this.props.ComparePropertiesData.length > 2) {
+      this.setState({ popup: true });
+      setTimeout(() => {
+        this.setState({ popup: false });
+      }, 2000);
+    }
+  }
   render() {
     return (
       <div className="allcards">
@@ -63,6 +79,18 @@ class FeaturedProperties extends React.Component<IProps, IState> {
           <p>labore et dolore magna aliquan ut enim ad minim veniam.</p>
           <div className="compareProperty">
             <Compareprod></Compareprod>
+            <br />
+            <br />
+            <button
+              id="compare-btn"
+              onClick={() => {
+                this.props.history.push({
+                  pathname: `/FinalizedProperties/`,
+                });
+              }}
+            >
+              <i className="fa fa-shopping-cart "></i> Finalized Property
+            </button>
           </div>
         </div>
         <div className="row">
@@ -119,12 +147,18 @@ class FeaturedProperties extends React.Component<IProps, IState> {
                     View Detail
                   </button>
                   <button
-                    className="compare-btn"
+                    className="compare-btn tooltip"
                     onClick={() => {
                       this.props.sendToRedux(item);
                       this.setState({ passData: item });
+                      this.checkLength();
                     }}
                   >
+                    {/* z{this.state.popup && (
+                      <span className="tooltip-test">
+                        Can't add more than three items
+                      </span>
+                    )} */}
                     Compare
                   </button>
                   {/* <Link to={`/products/${item.name}`}>{item.name}</Link> */}
@@ -144,42 +178,17 @@ class FeaturedProperties extends React.Component<IProps, IState> {
               </div>
             </div>
           ))}
-          {/* {this.state.showModal && (
+          {this.state.popup && (
             <div id="modal" className="show">
               <div className="modal-dialog">
                 <div className="modal-content">
-                  <div className="modal-header">
-                    <h5 className="modal-title">Viewing property</h5>
-
-                    <button onClick={() => this.setState({ showModal: false })}>
-                      X
-                    </button>
-                  </div>
                   <div className="modal-body">
-                    <img
-                      src={this.state.modalData.imgURL}
-                      width="300"
-                      height="200"
-                    />
-                    <h3>{this.state.modalData.title}</h3>
-                    <h4>{this.state.modalData.location}</h4>
-                    <h4>{this.state.modalData.type}</h4>
-                    <h4>{this.state.modalData.price}</h4>
-                  </div>
-                  <div className="modal-footer">
-                    <div>
-                      <button
-                        onClick={() => this.setState({ showModal: false })}
-                        className="btn"
-                      >
-                        Close
-                      </button>
-                    </div>
+                    <p>Can't compare more than three items</p>
                   </div>
                 </div>
               </div>
             </div>
-          )} */}
+          )}
         </div>
       </div>
     );

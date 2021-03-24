@@ -176,3 +176,32 @@ button {
   top: 20px;
   right: 10px;
 }
+.tooltip {
+  position: relative;
+}
+.tooltip .tooltip-test {
+  width: 70px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  bottom: 150%;
+  left: 100%;
+  margin-left: -60px;
+}
+
+.tooltip .tooltip-test::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: black transparent transparent transparent;
+}
+.modal-body p {
+  text-align: center;
+}

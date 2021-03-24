@@ -4,7 +4,10 @@ import { RouteComponentProps, withRouter } from "react-router";
 import { AllReduxStoreTypes } from "../../store/reducer";
 import "./CompareProducts.css";
 import { Dispatch } from "redux";
+
+import { setItemToFinalizedReducer } from "../../store/final/final.action";
 import { removeItemFromCompareReducer } from "../../store/compare/compare.action";
+import { IRoomDetail } from "../FeaturedProperties/FeaturedProperties";
 const mapStateToProps = (reduxStates: AllReduxStoreTypes) => {
   return {
     ComparePropertiesData: reduxStates.compareReducer.compareItems,
@@ -13,6 +16,8 @@ const mapStateToProps = (reduxStates: AllReduxStoreTypes) => {
 const mapDispatchToStore = (dispatch: Dispatch) => {
   return {
     sendTo: (index: number) => dispatch(removeItemFromCompareReducer(index)),
+    sendToRedux: (item: IRoomDetail) =>
+      dispatch(setItemToFinalizedReducer(item)),
   };
 };
 
@@ -105,6 +110,13 @@ class CompareProducts extends React.Component<IProp1, IState> {
                           }}
                         >
                           Remove
+                        </button>
+                        <button
+                          onClick={() => {
+                            this.props.sendToRedux(item);
+                          }}
+                        >
+                          Finalize
                         </button>
                       </div>
                     </div>

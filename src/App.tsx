@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+// import Header from "./components/Header/Header";
 import Header from "header-component-typescript/Header";
 import Footer from "./components/Footer/Footer";
 // import Office from "./components/PropertyTypes/Office";
@@ -13,6 +14,7 @@ import { Provider } from "react-redux";
 import { createStore } from "redux";
 import allReducers from "./store/reducer";
 import "./App.css";
+import FinalizedProperty from "./components/FinalizedProperty/FinalizedProperty";
 
 const store = createStore(
   allReducers(),
@@ -45,6 +47,10 @@ function App() {
                 <Switch>
                   <Route path="/" exact component={HomeMain} />
                   <Route path="/products/:id" component={apidemo} />
+                  <Route
+                    path="/FinalizedProperties"
+                    component={FinalizedProperty}
+                  />
                   {/* <Route path="/products/:name/:id?" component={House} /> */}
                   {/* <Route path="/products/house" component={House} />
               <Route path="/products/office" component={Office} />
