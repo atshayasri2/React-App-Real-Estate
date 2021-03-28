@@ -7,7 +7,7 @@ import Footer from "./components/Footer/Footer";
 // import House from "./components/PropertyTypes/House";
 // import Villa from "./components/PropertyTypes/Villa";
 import "font-awesome/css/font-awesome.min.css";
-import { BrowserRouter, Router, Route, Switch } from "react-router-dom";
+import { Router, Route, Switch } from "react-router-dom";
 import apidemo from "./components/PropertyFullDetails/APIdemo";
 import HomeMain from "./homeMain";
 import { Provider } from "react-redux";
