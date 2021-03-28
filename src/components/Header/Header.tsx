@@ -2,6 +2,13 @@ import React from "react";
 import "./Header.css";
 
 class Header extends React.Component {
+  state = {
+    active: false,
+  };
+  showMenus() {
+    const currentState = this.state.active;
+    this.setState({ active: !currentState });
+  }
   render() {
     return (
       <div className="HeaderDiv">
@@ -13,29 +20,33 @@ class Header extends React.Component {
               </span>
             </div>
             <div className="nav-right">
-              <div className="column2">
-                <button className="dropdown d1">
-                  <span>
-                    <i className="fa fa-flag">&nbsp;</i>
-                  </span>
-                  <span> Currency : USD &nbsp;</span>
-                  <span>
-                    <i className="fa fa-caret-down"></i>
-                  </span>
-                </button>
+              <div className="navbar-options">
+                <div className="column2">
+                  <button className="dropdown d1">
+                    <span>
+                      <i className="fa fa-flag">&nbsp;</i>
+                    </span>
+                    <span> Currency : USD &nbsp;</span>
+                    <span>
+                      <i className="fa fa-caret-down"></i>
+                    </span>
+                  </button>
+                </div>
+                <div className="column2">
+                  <button className="dropdown d1">
+                    <span>
+                      <i className="fa fa-globe">&nbsp;</i>
+                    </span>
+                    <span> Language : ENG &nbsp;</span>
+                    <span>
+                      <i className="fa fa-caret-down"></i>
+                    </span>
+                  </button>
+                </div>
               </div>
-              <div className="column2">
-                <button className="dropdown d1">
-                  <span>
-                    <i className="fa fa-globe">&nbsp;</i>
-                  </span>
-                  <span> Language : ENG &nbsp;</span>
-                  <span>
-                    <i className="fa fa-caret-down"></i>
-                  </span>
-                </button>
-              </div>
-              <button>LIST YOUR PROPERTY FOR FREE</button>
+              <button className="list-prop-btn">
+                LIST YOUR PROPERTY FOR FREE
+              </button>
             </div>
           </div>
         </div>
@@ -48,14 +59,29 @@ class Header extends React.Component {
                 width="50"
               />
             </div>
-            <div className="navbar2-sub">
-              <a href="#home">HOME</a>
-              <a href="#listing">LISTING</a>
-              <a href="#property">PROPERTY</a>
-              <a href="#gallery">GALLERY</a>
-              <a href="#page">PAGE</a>
-              <a href="#blog">BLOG</a>
-              <a href="#contact">CONTACT</a>
+            <div
+              className={
+                this.state.active ? "navbar2-sub responsive" : "navbar2-sub"
+              }
+            >
+              <div className="nav2-links">
+                <a href="#home">HOME</a>
+                <a href="#listing">LISTING</a>
+                <a href="#property">PROPERTY</a>
+                <a href="#gallery">GALLERY</a>
+                <a href="#page">PAGE</a>
+                <a href="#blog">BLOG</a>
+                <a href="#contact">CONTACT</a>
+              </div>
+
+              <a href="#menu" className="icon">
+                <i
+                  className="fa fa-bars"
+                  onClick={() => {
+                    this.showMenus();
+                  }}
+                ></i>
+              </a>
             </div>
             <div className="contact">
               <span>

@@ -3,21 +3,16 @@ const Property = (props: { properties: any }) => {
   return (
     <>
       <div>
-        <div className="Full-Details">
-          <div>
-            <img
-              src={properties.image}
-              alt="PropertiesImage"
-              width="400"
-              height="400"
-            />
+        <div className="full-details">
+          <div className="full-details-col1">
+            <img src={properties.image} alt="PropertiesImage" />
             <br />
             <div className="ActionButton">
               <button className="Actionbtn1">Buy Now</button>
               <button>Add to wishlist</button>
             </div>
           </div>
-          <div className="prodInfo">
+          <div className="full-details-col2">
             <h2>{properties.title}</h2>
             <p className="location">
               <i className="fa fa-map-marker"></i> 14 Tottenham Road, London

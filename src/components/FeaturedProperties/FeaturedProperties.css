@@ -205,3 +205,52 @@ button {
 .modal-body p {
   text-align: center;
 }
+@media screen and (max-width: 1100px) {
+  .column {
+    flex: 0 1 50%;
+  }
+  .compareProperty {
+    position: relative;
+    right: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 auto;
+    width: 70%;
+    flex-direction: row;
+  }
+}
+@media screen and (max-width: 900px) {
+  .column {
+    flex: 0 1 70%;
+  }
+  .compareProperty {
+    position: relative;
+    right: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 auto;
+    width: 70%;
+    flex-direction: row;
+  }
+}
+@media screen and (max-width: 500px) {
+  .compareProperty {
+    position: relative;
+    right: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 auto;
+    width: 90%;
+    flex-direction: row;
+  }
+  .icon-bar p,
+  button {
+    font-size: 10px;
+  }
+  .column {
+    flex: 0 1 100%;
+  }
+}

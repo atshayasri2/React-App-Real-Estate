@@ -10,6 +10,7 @@
 }
 .top img {
   opacity: 0.5;
+  width: 100%;
 }
 .centered h1 {
   font-size: 50px;
@@ -24,10 +25,12 @@
 }
 
 .opt-btn {
-  padding: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
   width: 15%;
   background-color: dodgerblue;
-  text-align: center;
 }
 .dropdown {
   display: flex;
@@ -77,7 +80,7 @@
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
-  flex: 25%;
+  /* flex: 25%; */
   padding: 0 10px;
 }
 .cont {
@@ -108,16 +111,14 @@ button {
 #center-btn1 {
   border: 2px solid orange;
 }
-.left {
+.left,
+.right {
   position: absolute;
   top: 50%;
   font-size: 20px;
 }
 .right {
-  position: absolute;
-  top: 50%;
   right: 0;
-  font-size: 20px;
 }
 
 .left,
@@ -130,6 +131,7 @@ button {
   background-color: #242526;
   opacity: 0.5;
   color: white;
+  z-index: 1000;
 }
 .left:hover,
 .right:hover {
@@ -157,6 +159,56 @@ button {
   background-color: coral;
 }
 
-.left p, .right p{
+.left p,
+.right p {
   text-align: center;
+}
+@media screen and (max-width: 1023px) {
+  .container1 {
+    /* width: 100%; */
+    display: flex;
+    width: auto;
+    /* justify-content: space-between; */
+    margin: 5px;
+    flex-direction: column;
+  }
+  .column1 {
+    width: 100%;
+    margin: 5px;
+  }
+  .opt-btn {
+    width: 30%;
+    margin: 10px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .bottomMenu {
+    float: left;
+    display: flex;
+    bottom: auto;
+    position: relative;
+    left: auto;
+    margin: 0;
+  }
+  .btndown1 {
+    border: 1px solid #ccc;
+  }
+  .left,
+  .right {
+    top: 45%;
+  }
+  .bottomMenu button {
+    font-size: 15px;
+  }
+  .optcont {
+    flex-direction: column;
+    width: 90%;
+  }
+  .opt-btn {
+    width: 85%;
+    margin: 10px auto;
+  }
+  .main-cont {
+    flex-wrap: nowrap;
+  }
 }

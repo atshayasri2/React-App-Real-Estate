@@ -45,7 +45,7 @@ export default class Content extends React.Component {
           <img
             src={this.state.imgList[this.state.index]}
             alt="gallery"
-            width="100%"
+            // width="100%"
             height="625"
           />
 
@@ -159,4 +159,3 @@ export default class Content extends React.Component {
     );
   }
 }
-// export default Content;

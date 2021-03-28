@@ -59,13 +59,8 @@ class FinalizedProperty extends React.Component<IProp1, IState> {
               <h1 className="cart-header">Finalized Properties</h1>
               {this.props.FinalizedPropertyData.map((item, index) => (
                 <div className="cart-Details">
-                  <div>
-                    <img
-                      src={item.imgURL}
-                      alt={item.title}
-                      width="400"
-                      height="300"
-                    />
+                  <div className="final-prop-img">
+                    <img src={item.imgURL} alt={item.title} />
                     <br />
                   </div>
                   <div className="prodInfo">
@@ -76,7 +71,7 @@ class FinalizedProperty extends React.Component<IProp1, IState> {
                     <button className="propertyType">{item.type}</button>
                     <p>
                       Price :<span>{item.price}</span>
-                      <span className="originalPrice">$500.000</span>
+                      {/* <span className="originalPrice">$500.000</span> */}
                     </p>
                     {/* <div className="highlights">
                       <p className="sub-title">Highlights</p>
@@ -133,7 +128,7 @@ class FinalizedProperty extends React.Component<IProp1, IState> {
         {this.state.showProperty && (
           <div id="modal" className="show">
             <div className="modal-dialog-final">
-              <div className="modal-content-property">
+              <div className="modal-content-property reqDocs">
                 <div className="modal-bodyCompare">
                   {/* <iframe
                     src="http://docs.google.com/gview?url=https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf&embedded=true"

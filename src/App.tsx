@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-// import Header from "./components/Header/Header";
-import Header from "header-component-typescript/Header";
+import Header from "./components/Header/Header";
+//import Header from "header-component-typescript/Header";
 import Footer from "./components/Footer/Footer";
 // import Office from "./components/PropertyTypes/Office";
 // import Apartment from "./components/PropertyTypes/Apartment";
@@ -15,13 +15,27 @@ import { createStore } from "redux";
 import allReducers from "./store/reducer";
 import "./App.css";
 import FinalizedProperty from "./components/FinalizedProperty/FinalizedProperty";
+import { loadState, saveState } from "./localStorage";
+import ReactGA from "react-ga";
 
+const TRACKING_ID = "UA-193145904-1";
+ReactGA.initialize(TRACKING_ID);
+ReactGA.pageview(window.location.pathname + window.location.search);
+
+const persistedSate = loadState();
 const store = createStore(
   allReducers(),
+  persistedSate,
   (window as any).__REDUX_DEVTOOLS_EXTENSION__ &&
     (window as any).__REDUX_DEVTOOLS_EXTENSION__()
 );
 
+store.subscribe(() => {
+  saveState({
+    compareReducer: store.getState().compareReducer,
+    finalReducer: store.getState().finalReducer,
+  });
+});
 function App() {
   const [isLoading, setisLoading] = useState(true);
   useEffect(() => {
@@ -40,7 +54,7 @@ function App() {
         </div>
       ) : (
         <Provider store={store}>
-          <div className="App">
+          <div>
             <Router>
               <Header />
               <div>

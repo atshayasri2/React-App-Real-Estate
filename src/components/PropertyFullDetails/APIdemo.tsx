@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { RouteComponentProps, useParams } from "react-router-dom";
-import "../PropertyTypes/product.css";
+import "./product.css";
 import { GET_Property } from "../../service/service";
 import withLoading from "./withLoading";
 import Property from "./Property";

@@ -43,6 +43,12 @@ class CompareProducts extends React.Component<IProp1, IState> {
       this.setState({ content: "" });
     }
   }
+  showpopup() {
+    document.body.style.overflow = "hidden";
+  }
+  closepopup() {
+    document.body.style.overflow = "auto";
+  }
   render() {
     return (
       <>
@@ -51,6 +57,7 @@ class CompareProducts extends React.Component<IProp1, IState> {
           onClick={() => {
             this.setState({ showModal: true });
             this.checkEmptyOrNot();
+            this.showpopup();
           }}
         >
           Compare Property
@@ -63,7 +70,12 @@ class CompareProducts extends React.Component<IProp1, IState> {
                 <div className="modal-header">
                   <h5 className="modal-title">Comparing Properties</h5>
 
-                  <button onClick={() => this.setState({ showModal: false })}>
+                  <button
+                    onClick={() => {
+                      this.closepopup();
+                      this.setState({ showModal: false });
+                    }}
+                  >
                     X
                   </button>
                 </div>
@@ -104,6 +116,7 @@ class CompareProducts extends React.Component<IProp1, IState> {
                       </div>
                       <div className="compareBodyFooter">
                         <button
+                          className="btn1"
                           onClick={() => {
                             this.props.sendTo(index);
                             this.checkEmptyOrNot();
@@ -125,7 +138,10 @@ class CompareProducts extends React.Component<IProp1, IState> {
                 <div className="modal-footer">
                   <div>
                     <button
-                      onClick={() => this.setState({ showModal: false })}
+                      onClick={() => {
+                        this.closepopup();
+                        this.setState({ showModal: false });
+                      }}
                       className="closePopup"
                     >
                       Close

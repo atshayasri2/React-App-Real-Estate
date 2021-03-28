@@ -41,7 +41,6 @@ interface IProps
 
 interface IState {
   showModal: boolean;
-  modalData: IRoomDetail;
   passData: IRoomDetail;
   popup: boolean;
 }
@@ -49,7 +48,6 @@ interface IState {
 class FeaturedProperties extends React.Component<IProps, IState> {
   public state: IState = {
     showModal: false,
-    modalData: {} as IRoomDetail,
     passData: {} as IRoomDetail,
     popup: false,
   };
@@ -133,14 +131,11 @@ class FeaturedProperties extends React.Component<IProps, IState> {
                   <button
                     className="compare-btn"
                     onClick={() => {
-                      // this.setState({ showModal: true, modalData: item });
                       this.props.history.push({
                         // pathname: `/products/${item.name.toLowerCase()}/${
                         //   item.id
                         // }`,
                         pathname: `/products/${item.id}`,
-                        // state: { detail: this.state.passData },
-                        // state: { message: "helo" },
                       });
                     }}
                   >
@@ -154,26 +149,13 @@ class FeaturedProperties extends React.Component<IProps, IState> {
                       this.checkLength();
                     }}
                   >
-                    {/* z{this.state.popup && (
+                    {/* {this.state.popup && (
                       <span className="tooltip-test">
                         Can't add more than three items
                       </span>
                     )} */}
                     Compare
                   </button>
-                  {/* <Link to={`/products/${item.name}`}>{item.name}</Link> */}
-                  {/* <Link
-                    to={{
-                      pathname: `/products/${item.name}`,
-                      state: {
-                        rowData: { item },
-                      },
-                    }}
-                  >
-                    {" "}
-                    {item.name}
-                  </Link> */}
-                  {/* <Product title={item.title} location={item.location} price={ item.price}/> */}
                 </div>
               </div>
             </div>

@@ -23,6 +23,12 @@
 }
 
 .fit {
-  width: 200px;
+  width: 45%;
   height: 100px;
+}
+
+@media screen and (max-width: 900px) {
+  .flex5 {
+    width: 70%;
+  }
 }
