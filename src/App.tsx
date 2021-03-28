@@ -7,7 +7,7 @@ import Footer from "./components/Footer/Footer";
 // import House from "./components/PropertyTypes/House";
 // import Villa from "./components/PropertyTypes/Villa";
 import "font-awesome/css/font-awesome.min.css";
-import { Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import apidemo from "./components/PropertyFullDetails/APIdemo";
 import HomeMain from "./homeMain";
 import { Provider } from "react-redux";
@@ -17,18 +17,18 @@ import "./App.css";
 import FinalizedProperty from "./components/FinalizedProperty/FinalizedProperty";
 import { loadState, saveState } from "./localStorage";
 import ReactGA from "react-ga";
-import { createBrowserHistory } from "history";
+// import { createBrowserHistory } from "history";
 
-var history = createBrowserHistory();
+// var history = createBrowserHistory();
 
 const TRACKING_ID = "UA-193145904-1";
 ReactGA.initialize(TRACKING_ID);
-// ReactGA.pageview(window.location.pathname + window.location.search);
+ReactGA.pageview(window.location.pathname + window.location.search);
 
-history.listen((location: any) => {
-  ReactGA.set({ page: location.pathname });
-  ReactGA.pageview(location.pathname);
-});
+// history.listen((location: any) => {
+//   ReactGA.set({ page: location.pathname });
+//   ReactGA.pageview(location.pathname);
+// });
 const persistedSate = loadState();
 const store = createStore(
   allReducers(),
@@ -46,7 +46,7 @@ store.subscribe(() => {
 function App() {
   const [isLoading, setisLoading] = useState(true);
   useEffect(() => {
-    ReactGA.pageview(window.location.pathname);
+    // ReactGA.pageview(window.location.pathname);
     setTimeout(() => {
       setisLoading(false);
     }, 2000);
@@ -63,7 +63,7 @@ function App() {
       ) : (
         <Provider store={store}>
           <div>
-            <Router history={history}>
+            <Router>
               <Header />
               <div>
                 <Switch>
