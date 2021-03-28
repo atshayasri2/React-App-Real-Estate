@@ -6,6 +6,7 @@ import { connect, ConnectedProps } from "react-redux";
 import { Dispatch } from "redux";
 import { setItemToCompareReducer } from "../../store/compare/compare.action";
 import { AllReduxStoreTypes } from "../../store/reducer";
+import Event from "../tracking/tracking";
 // import FinalizedProperty from "../FinalizedProperty/FinalizedProperty";
 export interface IRoomDetail {
   id: number;
@@ -147,6 +148,11 @@ class FeaturedProperties extends React.Component<IProps, IState> {
                       this.props.sendToRedux(item);
                       this.setState({ passData: item });
                       this.checkLength();
+                      Event(
+                        "PROPERTY",
+                        "Property added to compare",
+                        "FeaturedProperties_Page"
+                      );
                     }}
                   >
                     {/* {this.state.popup && (
