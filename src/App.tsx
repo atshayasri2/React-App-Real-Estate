@@ -17,17 +17,10 @@ import "./App.css";
 import FinalizedProperty from "./components/FinalizedProperty/FinalizedProperty";
 import { loadState, saveState } from "./localStorage";
 import ReactGA from "react-ga";
-// import { createBrowserHistory } from "history";
-
-// var history = createBrowserHistory();
 
 const TRACKING_ID = "UA-193145904-1";
 ReactGA.initialize(TRACKING_ID);
 
-// history.listen((location: any) => {
-//   ReactGA.set({ page: location.pathname });
-//   ReactGA.pageview(location.pathname);
-// });
 const persistedSate = loadState();
 const store = createStore(
   allReducers(),
