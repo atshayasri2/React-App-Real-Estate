@@ -7,7 +7,12 @@ import Footer from "./components/Footer/Footer";
 // import House from "./components/PropertyTypes/House";
 // import Villa from "./components/PropertyTypes/Villa";
 import "font-awesome/css/font-awesome.min.css";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  withRouter,
+} from "react-router-dom";
 import apidemo from "./components/PropertyFullDetails/APIdemo";
 import HomeMain from "./homeMain";
 import { Provider } from "react-redux";
@@ -23,7 +28,6 @@ import ReactGA from "react-ga";
 
 const TRACKING_ID = "UA-193145904-1";
 ReactGA.initialize(TRACKING_ID);
-ReactGA.pageview(window.location.pathname + window.location.search);
 
 // history.listen((location: any) => {
 //   ReactGA.set({ page: location.pathname });
@@ -47,6 +51,7 @@ function App() {
   const [isLoading, setisLoading] = useState(true);
   useEffect(() => {
     // ReactGA.pageview(window.location.pathname);
+    ReactGA.pageview(window.location.pathname + window.location.search);
     setTimeout(() => {
       setisLoading(false);
     }, 2000);
@@ -87,4 +92,4 @@ function App() {
     </>
   );
 }
-export default App;
+export default withRouter(App);
